@@ -27,7 +27,7 @@ pipeline {
 
         stage('TestReporting') {
           steps {
-            jacoco(execPattern: 'C:\\Users\\CLIENT\\.jenkins\\workspace\\JenkinsDemo_master\\build\\jacoco\\test.exec')
+            jacoco(execPattern: 'C:\\Users\\CLIENT\\.jenkins\\workspace\\JenkinsDemo_master\\build\\jacoco\\test.exec', exclusionPattern: 'test')
           }
         }
 
