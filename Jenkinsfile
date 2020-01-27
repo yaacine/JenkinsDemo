@@ -24,4 +24,7 @@ pipeline {
     }
 
   }
+  environment {
+    withSonarQubeEnv = 'true'
+  }
 }
