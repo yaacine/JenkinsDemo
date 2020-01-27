@@ -13,9 +13,12 @@ pipeline {
       }
     }
 
-    stage('error') {
+    stage('sonarQube') {
       steps {
-        withSonarQubeEnv 'sonar'
+        withSonarQubeEnv('sonar') {
+          bat 'gradle sonarqube'
+        }
+
       }
     }
 
