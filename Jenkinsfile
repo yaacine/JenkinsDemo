@@ -13,7 +13,7 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         withSonarQubeEnv 'sonar'
       }
