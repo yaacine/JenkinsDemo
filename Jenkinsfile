@@ -14,10 +14,21 @@ pipeline {
     }
 
     stage('sonarQube') {
-      steps {
-        withSonarQubeEnv('sonar') {
-          bat 'gradle sonarqube'
-          waitForQualityGate(credentialsId: 'sonar', abortPipeline: true)
+      parallel {
+        stage('sonarQube') {
+          steps {
+            withSonarQubeEnv('sonar') {
+              bat 'gradle sonarqube'
+              waitForQualityGate(credentialsId: 'sonar', abortPipeline: true)
+            }
+
+          }
+        }
+
+        stage('TestReporting') {
+          steps {
+            jacoco(execPattern: 'C:\\Users\\CLIENT\\.jenkins\\workspace\\JenkinsDemo_master\\build\\jacoco\\test.exec')
+          }
         }
 
       }
